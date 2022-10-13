@@ -1,12 +1,13 @@
 #include "user.h"
 
 User::User(int id) {
-  node->id = id;
-  node->inbox = new Inbox();
-  node->next = nullptr;
+    this->node = new User_node;
+    node->id = id;
+    node->inbox = new Inbox();
+    node->next = nullptr;
 };
 
 User::~User() {
-  delete this->node->inbox;
-  delete this->node;
+    delete this->node->inbox;
+    delete this->node;
 }
