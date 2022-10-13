@@ -11,6 +11,10 @@ using namespace std;
 
 Controller *controller;
 
+// Input types
+#define input_user_register "cadastra"
+#define input_user_removal "remove"
+
 void parse_input(istringstream &in) {
     string word_;
     in >> word_;
@@ -20,6 +24,11 @@ void parse_input(istringstream &in) {
         in >> id;
         controller->register_user_by_id(id);
         return;
+    }
+    if(word_ == input_user_removal) {
+        int id;
+        in >> id;
+        controller->remove_user_by_id(id);
     }
 }
 

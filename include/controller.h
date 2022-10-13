@@ -10,18 +10,21 @@ using namespace std;
 #define sr_found 1
 
 struct Search_result {
-  User* user;
-  User* previous;
-  int code;
+    User *user;
+    User *previous;
+    int code;
 };
 
 class Controller {
- private:
-  User* first_user;
-  Search_result find_user_by_id(int id);
+private:
+    User *first_user;
 
- public:
-  Controller();
-  void register_user_by_id(int id);
-  void remove_user_by_id(int id);
+    Search_result find_user_by_id(int id);
+
+public:
+    Controller();
+
+    void register_user_by_id(int id);
+
+    void remove_user_by_id(int id);
 };

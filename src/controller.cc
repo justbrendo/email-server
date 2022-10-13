@@ -3,7 +3,13 @@
 #include <algorithm>
 #include <iostream>
 
-#include "definitions.h"
+// Account creation
+#define account_created(id) "OK: CONTA " << id << " CADASTRADA"
+#define account_already_exists(id) "ERRO: CONTA " << id << " JA EXISTENTE"
+
+// Account removal
+#define account_removed(id) "OK: CONTA " << id << " REMOVIDA"
+#define account_does_not_exist(id) "ERRO: CONTA " << id << " NAO EXISTE"
 
 using namespace std;
 

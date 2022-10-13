@@ -1,5 +1,5 @@
 #include "inbox.h"
 
-Inbox::Inbox(){
+Inbox::Inbox() {
 
 };

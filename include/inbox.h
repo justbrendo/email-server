@@ -1,7 +1,7 @@
 #pragma once
 
 class Inbox {
- private:
- public:
-  Inbox();
+private:
+public:
+    Inbox();
 };
