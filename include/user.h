@@ -2,18 +2,12 @@
 
 #include "inbox.h"
 
-class User;
-
-struct User_node {
-    User *next;
-    int id;
-    Inbox *inbox;
-};
-
 class User {
 private:
 public:
-    User_node *node;
+    User *next;
+    int id;
+    Inbox *inbox;
 
     explicit User(int id);
 

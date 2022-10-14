@@ -13,7 +13,8 @@ Controller *controller;
 // Input types
 #define input_user_register "cadastra"
 #define input_user_removal "remove"
-#define input_send_message "entrega"
+#define input_send_mail "entrega"
+#define input_retrieve_mail "consulta"
 
 void parse_input(istringstream &in) {
     string word_;
@@ -27,8 +28,19 @@ void parse_input(istringstream &in) {
     if (word_ == input_user_removal)
         return controller->remove_user_by_id(id);
 
-    if(word_ == input_send_message)
-        return controller
+    if (word_ == input_send_mail) {
+        int priority;
+        in >> priority;
+        string content;
+        string buffer;
+        while (in >> buffer && buffer != "FIM")
+            content.append(" " + buffer);
+        return controller->send_message_by_id(id, priority, content);
+    }
+
+    if (word_ == input_retrieve_mail) {
+        return controller->retrieve_mail_by_id(id);
+    }
 }
 
 int main(int argc, char **argv) {

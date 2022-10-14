@@ -29,4 +29,6 @@ public:
     void remove_user_by_id(int id);
 
     void send_message_by_id(int id, int priority, string &message);
+
+    void retrieve_mail_by_id(int id);
 };
