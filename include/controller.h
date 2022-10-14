@@ -27,4 +27,6 @@ public:
     void register_user_by_id(int id);
 
     void remove_user_by_id(int id);
+
+    void send_message_by_id(int id, int priority, string &message);
 };

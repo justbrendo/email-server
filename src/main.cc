@@ -4,7 +4,6 @@
 #include <string>
 
 #include "controller.h"
-#include "definitions.h"
 #include "utils.h"
 
 using namespace std;
@@ -14,22 +13,22 @@ Controller *controller;
 // Input types
 #define input_user_register "cadastra"
 #define input_user_removal "remove"
+#define input_send_message "entrega"
 
 void parse_input(istringstream &in) {
     string word_;
     in >> word_;
     utils::lower_string(word_);
-    if (word_ == input_user_register) {
-        int id;
-        in >> id;
-        controller->register_user_by_id(id);
-        return;
-    }
-    if(word_ == input_user_removal) {
-        int id;
-        in >> id;
-        controller->remove_user_by_id(id);
-    }
+    int id;
+    in >> id;
+    if (word_ == input_user_register)
+        return controller->register_user_by_id(id);
+
+    if (word_ == input_user_removal)
+        return controller->remove_user_by_id(id);
+
+    if(word_ == input_send_message)
+        return controller
 }
 
 int main(int argc, char **argv) {

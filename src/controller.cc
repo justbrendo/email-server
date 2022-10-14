@@ -1,4 +1,5 @@
 #include "controller.h"
+#include "mail.h"
 
 #include <algorithm>
 #include <iostream>
@@ -52,10 +53,24 @@ void Controller::register_user_by_id(int id) {
 void Controller::remove_user_by_id(int id) {
     Search_result sr = find_user_by_id(id);
     if (sr.code == sr_not_found) {
-        cout << account_does_not_exist(id);
+        cout << account_does_not_exist(id) << "\n";
         return;
     }
-    sr.previous->node->next = sr.user->node->next;
+    if (sr.previous != nullptr) {
+        sr.previous->node->next = sr.user->node->next;
+    } else {
+        first_user = nullptr;
+    }
     delete sr.user;
-    cout << account_removed(id);
+    cout << account_removed(id) << "\n";
 };
+
+void Controller::send_message_by_id(int id, int priority, string &content) {
+    Search_result sr = find_user_by_id(id);
+    if (sr.code == sr_not_found) {
+        cout << account_does_not_exist(id) << "\n";
+        return;
+    }
+    Mail *mail = new Mail(content, priority);
+
+}
