@@ -50,7 +50,7 @@ void Controller::register_user_by_id(int id) {
         cout << account_already_exists(id) << "\n";
         return;
     }
-    if (sr.previous == nullptr) {
+    if (first_user == nullptr) {
         first_user = new User(id);
     } else {
         sr.previous->next = new User(id);
@@ -67,7 +67,11 @@ void Controller::remove_user_by_id(int id) {
     if (sr.previous != nullptr) {
         sr.previous->next = sr.user->next;
     } else {
-        first_user = nullptr;
+        if(sr.user->next != nullptr) {
+            first_user = sr.user->next;
+        } else {
+            first_user = nullptr;
+        }
     }
     delete sr.user;
     cout << account_removed(id) << "\n";

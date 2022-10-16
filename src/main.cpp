@@ -16,6 +16,8 @@ Controller *controller;
 #define input_send_mail "entrega"
 #define input_retrieve_mail "consulta"
 
+int debug = 0;
+
 void parse_input(istringstream &in) {
     string word_;
     in >> word_;
@@ -44,6 +46,19 @@ void parse_input(istringstream &in) {
 }
 
 int main(int argc, char **argv) {
+    if (argc < 2) {
+        cout << "Input not specified."
+             << "\n";
+        cout << "Usage: ./run.out <filename>"
+             << "\n"
+             << "'-d' can be passed as argument to enable debugging"
+             << "\n";
+        return 1;
+    }
+
+    if(argc == 3) {
+        if(argv[2] == "-d")
+    }
     // File for inputs
     string file = argv[1];
 
@@ -52,6 +67,8 @@ int main(int argc, char **argv) {
         cout << "Failed to load the specified file."
              << "\n";
         cout << "Usage: ./run.out <filename>"
+             << "\n"
+             << "'-d' can be passed as argument to enable debugging"
              << "\n";
         return 1;
     }
