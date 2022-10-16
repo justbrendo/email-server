@@ -3,8 +3,8 @@
 #include <sstream>
 #include <string>
 
-#include "controller.h"
-#include "utils.h"
+#include "../include/controller.h"
+#include "../include/utils.h"
 
 using namespace std;
 
@@ -46,19 +46,23 @@ void parse_input(istringstream &in) {
 }
 
 int main(int argc, char **argv) {
+    controller = new Controller();
+
     if (argc < 2) {
         cout << "Input not specified."
              << "\n";
-        cout << "Usage: ./run.out <filename>"
+        cout << "Usage: ./run.out <filename>/debug"
              << "\n"
-             << "'-d' can be passed as argument to enable debugging"
+             << "use 'debug' as argument to test performance."
              << "\n";
         return 1;
     }
 
-    if(argc == 3) {
-        if(argv[2] == "-d")
+    if (argv[1] == string("debug")) {
+        utils::performance_check(controller);
+        return 0;
     }
+
     // File for inputs
     string file = argv[1];
 
@@ -68,12 +72,10 @@ int main(int argc, char **argv) {
              << "\n";
         cout << "Usage: ./run.out <filename>"
              << "\n"
-             << "'-d' can be passed as argument to enable debugging"
+             << "use 'debug' as argument to test performance."
              << "\n";
         return 1;
     }
-
-    controller = new Controller();
 
     string line;
     while (getline(inputs_, line)) {

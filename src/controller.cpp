@@ -1,4 +1,4 @@
-#include "controller.h"
+#include "../include/controller.h"
 
 #include <algorithm>
 #include <iostream>
