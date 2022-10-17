@@ -38,8 +38,12 @@ OBJ = $(patsubst $(SRC_FOLDER)%.cpp, $(OBJ_FOLDER)%.o, $(SRC))
 $(OBJ_FOLDER)%.o: $(SRC_FOLDER)%.cpp
 	$(CC) $(CXXFLAGS) -c $< -o $@ -I$(INCLUDE_FOLDER)
 
-all: $(OBJ)
+all: dirs $(OBJ)
 	$(CC) $(CXXFLAGS) -o $(BIN_FOLDER)$(TARGET) $(OBJ)
+
+dirs:
+	mkdir -p bin
+	mkdir -p obj
 
 clean:
 	@rm -rf $(OBJ_FOLDER)* $(BIN_FOLDER)*
